@@ -5,7 +5,7 @@ using System.Runtime.InteropServices;
 
 namespace acctele
 {
-    public class memory_reader
+    public class Memory_reader
     {
         // Method to read telemetry data from shared memory
         public string[] ReadFromSharedMemory()
@@ -29,6 +29,18 @@ namespace acctele
                         // Convert the byte array to a TelemetryData object
                         TelemetryData telemetryData = ByteArrayToStructure<TelemetryData>(data);
 
+                        // MOE Parameters. Corrects erroneous data when at crossing points and thresholds.
+                        if (telemetryData.acc3x <= 0.001 && telemetryData.acc3y <= 0.0015 && telemetryData.acc3z <= 0.001 && telemetryData.speedKmh <= 0.05)
+                        {
+                            telemetryData.velocity3x = 0;
+                            telemetryData.velocity3y = 0;
+                            telemetryData.velocity3z = 0;
+                        }
+                        if (telemetryData.steerAngle <= 0.0003 && telemetryData.steerAngle >= -0.001)
+                        {
+                            telemetryData.steerAngle = 0;
+                        }
+
                         // Process the telemetry data as needed
                         // Example: Log or display telemetry data
                         telemetryVals[0] = "PID: " + telemetryData.packetID;
@@ -45,26 +57,30 @@ namespace acctele
                         telemetryVals[11] = "Acc [X]: " + Truncate(telemetryData.acc3x.ToString(), 5);
                         telemetryVals[12] = "Acc [Y]: " + Truncate(telemetryData.acc3y.ToString(), 5);
                         telemetryVals[13] = "Acc [Z]: " + Truncate(telemetryData.acc3z.ToString(), 5);
-                        telemetryVals[14] = "Wheelslip [FL]: " + Truncate(telemetryData.slipfl.ToString(), 4);
-                        telemetryVals[15] = "Wheelslip [FR]: " + Truncate(telemetryData.slipfr.ToString(), 4);
-                        telemetryVals[16] = "Wheelslip [RL]: " + Truncate(telemetryData.sliprl.ToString(), 4);
-                        telemetryVals[17] = "Wheelslip [RR]: " + Truncate(telemetryData.sliprr.ToString(), 4);
-                        telemetryVals[18] = "Pressure [FL]: " + Truncate(telemetryData.presfl.ToString(), 5);
-                        telemetryVals[19] = "Pressure [FR]: " + Truncate(telemetryData.presfr.ToString(), 5);
-                        telemetryVals[20] = "Pressure [RL]: " + Truncate(telemetryData.presrl.ToString(), 5);
-                        telemetryVals[21] = "Pressure [RR]: " + Truncate(telemetryData.presrr.ToString(), 5);
-                        telemetryVals[22] = "Angular Speed [FL]: " + Truncate(telemetryData.angspeedfl.ToString(), 5);
-                        telemetryVals[23] = "Angular Speed [FR]: " + Truncate(telemetryData.angspeedfr.ToString(), 5);
-                        telemetryVals[24] = "Angular Speed [RL]: " + Truncate(telemetryData.angspeedrl.ToString(), 5);
-                        telemetryVals[25] = "Angular Speed [RR]: " + Truncate(telemetryData.angspeedrr.ToString(), 5);
-                        telemetryVals[26] = "Tire Temp [FL]: " + Truncate(telemetryData.tempfl.ToString(), 5);
-                        telemetryVals[27] = "Tire Temp [FR]: " + Truncate(telemetryData.tempfr.ToString(), 5);
-                        telemetryVals[28] = "Tire Temp [RL]: " + Truncate(telemetryData.temprl.ToString(), 5);
-                        telemetryVals[29] = "Tire Temp [RR]: " + Truncate(telemetryData.temprr.ToString(), 5);
-                        telemetryVals[30] = "Suspension [FL]: " + Truncate(telemetryData.sustfl.ToString(), 5);
-                        telemetryVals[31] = "Suspension [FR]: " + Truncate(telemetryData.sustfr.ToString(), 5);
-                        telemetryVals[32] = "Suspension [RL]: " + Truncate(telemetryData.sustrl.ToString(), 5);
-                        telemetryVals[33] = "Suspension [RR]: " + Truncate(telemetryData.sustrr.ToString(), 5);
+                        telemetryVals[14] = "Slip [FL / FR]:  " + Truncate(telemetryData.slipfl.ToString(), 4) +
+                            "  /  " + Truncate(telemetryData.slipfr.ToString(), 4);
+                        telemetryVals[15] = "Slip [RL / RR]:  " + Truncate(telemetryData.sliprl.ToString(), 4) + 
+                            "  /  " + Truncate(telemetryData.sliprr.ToString(), 4);
+                        telemetryVals[16] = "Pres [FL / FR]: " + Truncate(telemetryData.presfl.ToString(), 5) + 
+                            "  /  " + Truncate(telemetryData.presfr.ToString(), 5);
+                        telemetryVals[17] = "Pres [RL / RR]: " + Truncate(telemetryData.presrl.ToString(), 5) + 
+                            "  /  " + Truncate(telemetryData.presrr.ToString(), 5);
+                        telemetryVals[18] = "Angular Speed [FL]: " + Truncate(telemetryData.angspeedfl.ToString(), 5);
+                        telemetryVals[19] = "Angular Speed [FR]: " + Truncate(telemetryData.angspeedfr.ToString(), 5);
+                        telemetryVals[20] = "Angular Speed [RL]: " + Truncate(telemetryData.angspeedrl.ToString(), 5);
+                        telemetryVals[21] = "Angular Speed [RR]: " + Truncate(telemetryData.angspeedrr.ToString(), 5);
+                        telemetryVals[22] = "Tire Temp [FL]: " + Truncate(telemetryData.tempfl.ToString(), 5);
+                        telemetryVals[23] = "Tire Temp [FR]: " + Truncate(telemetryData.tempfr.ToString(), 5);
+                        telemetryVals[24] = "Tire Temp [RL]: " + Truncate(telemetryData.temprl.ToString(), 5);
+                        telemetryVals[25] = "Tire Temp [RR]: " + Truncate(telemetryData.temprr.ToString(), 5);
+                        telemetryVals[26] = "Suspension [FL]: " + Truncate(telemetryData.sustfl.ToString(), 5);
+                        telemetryVals[27] = "Suspension [FR]: " + Truncate(telemetryData.sustfr.ToString(), 5);
+                        telemetryVals[28] = "Suspension [RL]: " + Truncate(telemetryData.sustrl.ToString(), 5);
+                        telemetryVals[29] = "Suspension [RR]: " + Truncate(telemetryData.sustrr.ToString(), 5);
+                        telemetryVals[30] = "TC On: " + telemetryData.tcon;
+                        telemetryVals[31] = "Heading: " + Truncate(telemetryData.heading.ToString(), 5);
+                        telemetryVals[32] = "Pitch: " + Truncate(telemetryData.pitch.ToString(), 5);
+                        telemetryVals[33] = "Roll: " + Truncate(telemetryData.roll.ToString(), 5);
                         // Add more fields as needed
                     }
                 }
@@ -72,10 +88,11 @@ namespace acctele
             catch (FileNotFoundException)
             {
                 Console.WriteLine("Memory-mapped file not found.");
+                telemetryVals[0] = "Waiting for telemetry...";
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                Console.WriteLine("An error occurred while reading from shared memory: " + ex.Message);
+                telemetryVals[0] = "Waiting for telemetry...";
             }
             return telemetryVals;
         }
@@ -134,16 +151,27 @@ namespace acctele
         public float angspeedfr;
         public float angspeedrl;
         public float angspeedrr;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)] public float[] ignoredValues2; // Skipped fields
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)] public float[] ignoredValues2;
         public float tempfl; // Core Tire temps
         public float tempfr;
         public float temprl;
         public float temprr;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)] public float[] ignoredValues3; // Skipped fields
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)] public float[] ignoredValues3;
         public float sustfl; // Suspension Travel
         public float sustfr;
         public float sustrl;
         public float sustrr;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)] public float[] ignoredValues4;
+        public float tcon;
+        public float heading;
+        public float pitch;
+        public float roll;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)] public float[] ignoredValues5;
+        public float carDamage1;
+        public float carDamage2;
+        public float carDamage3;
+        public float carDamage4;
+        public float carDamage5;
         // Add more fields as needed
     }
 }

@@ -77,6 +77,7 @@
             this.tele_box.Size = new System.Drawing.Size(238, 606);
             this.tele_box.TabIndex = 0;
             this.tele_box.Text = "Waiting for telemetry data...";
+            this.tele_box.WordWrap = false;
             this.tele_box.SizeChanged += new System.EventHandler(this.Tele_box_SizeChanged);
             this.tele_box.TextChanged += new System.EventHandler(this.Tele_box_TextChanged);
             // 
@@ -187,7 +188,8 @@
             this.version.Name = "version";
             this.version.Size = new System.Drawing.Size(98, 20);
             this.version.TabIndex = 7;
-            this.version.Text = "Version 1.2a";
+            this.version.Text = "Version 1.3a";
+            this.version.Click += new System.EventHandler(this.Version_Click);
             // 
             // con_buttons
             // 

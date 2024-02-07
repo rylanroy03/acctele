@@ -65,10 +65,11 @@ namespace acctele
         {
             datetime.Text = DateTime.Now.ToString();
 
-            memory_reader reader = new memory_reader();
+            Memory_reader reader = new Memory_reader();
             string[] teleVals = reader.ReadFromSharedMemory();
             if (freezeVal != true)
             {
+
                 tele_box.Text = string.Join(Environment.NewLine, teleVals);
             }
         }
@@ -92,7 +93,7 @@ namespace acctele
 
         private void Copy_con_Click(object sender, EventArgs e)
         {
-            memory_reader reader = new memory_reader();
+            Memory_reader reader = new Memory_reader();
             string[] teleVals = reader.ReadFromSharedMemory();
 
             if (teleVals != null)
@@ -115,7 +116,8 @@ namespace acctele
             {
                 freezeVal = true;
                 FreezeCon.Text = ("Resume");
-                if (ScrollAllow() == true)
+                var (canScroll, _) = ScrollAllow();
+                if (canScroll == true)
                 {
                     tele_box.ScrollBars = ScrollBars.Vertical;
                 }     
@@ -130,7 +132,8 @@ namespace acctele
 
         private void Tele_box_SizeChanged(object sender, EventArgs e)
         {
-            if (ScrollAllow() == true && freezeVal == true)
+            var (canScroll, _) = ScrollAllow();
+            if (canScroll == true && freezeVal == true)
             {
                 tele_box.ScrollBars = ScrollBars.Vertical;
             }
@@ -140,19 +143,26 @@ namespace acctele
             }
         }
 
-        private bool ScrollAllow()
+        private (bool canScroll, int tLength) ScrollAllow()
         {
-            memory_reader reader = new memory_reader();
+            Memory_reader reader = new Memory_reader();
             string[] teleVals = reader.ReadFromSharedMemory();
             int tLength = teleVals.Length * 16;
             if (this.ClientSize.Height < tLength)
             {
-                return true;
+                bool canScroll = true;
+                return (canScroll, tLength);
             }
             else
             {
-                return false;
+                bool canScroll = false;
+                return (canScroll, tLength);
             }
+        }
+
+        private void Version_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
