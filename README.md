@@ -6,9 +6,10 @@
 ACCTele is designed to pull the shared memory from Assetto Corsa Competizione (ACC).
 The program is currently a lightweight executable with plans to develop into a fully-fledged 
 telemetry application with the following:
-	- save functionality
-	- modular interface
-	- clear data representation
+
+ - save functionality
+ - modular interface
+ - clear representation of data
 
 If you have any recommendations, please add them to the GitHub repo... however that
 works. I'm new to GitHub. But I'll find it!
