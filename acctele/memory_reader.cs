@@ -41,7 +41,7 @@ namespace acctele
                             telemetryData.steerAngle = 0;
                         }
 
-                        // Process the telemetry data as needed
+                        // TELEMETRY DATA DISPLAY
                         // Example: Log or display telemetry data
                         telemetryVals[0] = "PID: " + telemetryData.packetID;
                         telemetryVals[1] = "Gas: " + telemetryData.gas;
