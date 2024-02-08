@@ -63,8 +63,6 @@ namespace acctele
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            datetime.Text = DateTime.Now.ToString();
-
             Memory_reader reader = new Memory_reader();
             string[] teleVals = reader.ReadFromSharedMemory();
             if (freezeVal != true)

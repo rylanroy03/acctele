@@ -16,6 +16,9 @@
 # Mono auto generated files
 mono_crash.*
 
+# User specific directory
+acctele/icon_working/
+
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
