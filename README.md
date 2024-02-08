@@ -1,15 +1,18 @@
-# ACCTele 1.3.3.1 (Alpha)
+# ACCTele 1.3.4.0 (Alpha)
 ### An open-source realtime telemetry project designed for Assetto Corsa Competizione
 #### Created by Rylan Markwardt
 
 
 ACCTele is designed to pull the shared memory from Assetto Corsa Competizione (ACC).
 
-The program is currently a lightweight executable with plans to develop into a fully-fledged telemetry application with the following:
+The program is currently a lightweight executable with plans to develop into a fully-fledged telemetry application.
 
+The following are planned features:
  - save functionality
  - modular interface
  - clear representation of data
+
+I recognize that right now it's really just a console that prints some memory out with some fancy coatings and expensive cherries... but the user experience is 95% of your retention. If it doesnt ~feel~ right, it will never ~be~ right.
 
 If you have any recommendations, please add them to the GitHub repo... however that works. I'm new to GitHub. But I'll find it!
 
@@ -31,7 +34,7 @@ and complete the following:
 	Pretty sure radar guns don't tell you that you were going 214.2984372645 Km/H.
 
 
-### Supported Telemetry Parameters (v1.3.3.1)
+### Supported Telemetry Parameters (v1.3.4.0)
 	- Packet ID
 	- Gas
 	- Brake

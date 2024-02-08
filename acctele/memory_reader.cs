@@ -10,7 +10,7 @@ namespace acctele
         // Method to read telemetry data from shared memory
         public string[] ReadFromSharedMemory()
         {
-            string[] telemetryVals = new string[34]; // DEFINES THE SIZE OF THE ARRAY. MUST CHANGE IF OUT OF BOUNDS
+            string[] telemetryVals = new string[48]; // DEFINES THE SIZE OF THE ARRAY. MUST CHANGE IF OUT OF BOUNDS
             try
             {
                 using (MemoryMappedFile mmf = MemoryMappedFile.OpenExisting("acpmf_physics"))
@@ -81,6 +81,20 @@ namespace acctele
                         telemetryVals[31] = "Heading: " + Truncate(telemetryData.heading.ToString(), 5);
                         telemetryVals[32] = "Pitch: " + Truncate(telemetryData.pitch.ToString(), 5);
                         telemetryVals[33] = "Roll: " + Truncate(telemetryData.roll.ToString(), 5);
+                        telemetryVals[34] = "Car damage [Frnt]: " + telemetryData.carDamage1;
+                        telemetryVals[35] = "Car damage [Rear]: " + telemetryData.carDamage2;
+                        telemetryVals[36] = "Car damage [Left]: " + telemetryData.carDamage3;
+                        telemetryVals[37] = "Car damage [Rght]: " + telemetryData.carDamage4;
+                        telemetryVals[38] = "Car damage [Cntr]: " + telemetryData.carDamage5;
+                        telemetryVals[39] = "Pit Limiter: " + telemetryData.pitlimit;
+                        telemetryVals[40] = "ABS Level: " + telemetryData.absOn;
+                        telemetryVals[41] = "Autoshifter: " + telemetryData.autoshifterOn;
+                        telemetryVals[42] = "Turbo Boost: " + telemetryData.turboBoost;
+                        telemetryVals[43] = "Air Temp: " + telemetryData.airTemp;
+                        telemetryVals[44] = "Road Temp: " + telemetryData.roadTemp;
+                        telemetryVals[45] = "Local Vel [X]: " + telemetryData.localVelx;
+                        telemetryVals[46] = "Local Vel [Y]: " + telemetryData.localVely;
+                        telemetryVals[47] = "Local Vel [Z]: " + telemetryData.localVelz;
                         // Add more fields as needed
                     }
                 }
@@ -172,6 +186,20 @@ namespace acctele
         public float carDamage3;
         public float carDamage4;
         public float carDamage5;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 1)] public float[] ignoredValues6;
+        public int pitlimit;
+        public float absOn;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)] public float[] ignoredValues7;
+        public int autoshifterOn;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)] public float[] ignoredValues8;
+        public float turboBoost;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 2)] public float[] ignoredValues9;
+        public float airTemp;
+        public float roadTemp;
+        public float localVelx;
+        public float localVely;
+        public float localVelz;
+
         // Add more fields as needed
     }
 }

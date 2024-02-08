@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AxWMPLib;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -16,6 +17,11 @@ namespace acctele
         {
             InitializeComponent();
             InitializeTimer();
+            string StartupVid = "F:\\acctele\\acctele\\logo\\startup.avi";
+            startupPlayback.windowlessVideo = true;
+            startupPlayback.Ctlenabled = false;
+            startupPlayback.uiMode = "None";
+            startupPlayback.URL = StartupVid;
         }
 
         private void InitializeTimer()
@@ -23,7 +29,7 @@ namespace acctele
 
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer
             {
-                Interval = 2000 // wait time on splash
+                Interval = 2500 // wait time on splash
             };
             timer.Tick += (sender, e) =>
             {

@@ -54,7 +54,6 @@
             this.east_console.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.east_console.BackColor = System.Drawing.Color.Black;
-            this.east_console.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.east_console.Controls.Add(this.tele_box);
             this.east_console.Location = new System.Drawing.Point(1143, 20);
             this.east_console.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -75,7 +74,7 @@
             this.tele_box.Name = "tele_box";
             this.tele_box.ReadOnly = true;
             this.tele_box.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.tele_box.Size = new System.Drawing.Size(247, 652);
+            this.tele_box.Size = new System.Drawing.Size(249, 654);
             this.tele_box.TabIndex = 0;
             this.tele_box.Text = "Waiting for telemetry data...";
             this.tele_box.WordWrap = false;
@@ -158,12 +157,12 @@
             this.version.AutoSize = true;
             this.version.BackColor = System.Drawing.Color.Transparent;
             this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.version.Location = new System.Drawing.Point(624, 710);
+            this.version.Location = new System.Drawing.Point(630, 704);
             this.version.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(159, 20);
+            this.version.Size = new System.Drawing.Size(146, 20);
             this.version.TabIndex = 7;
-            this.version.Text = "Version 1.3.3.1-alpha";
+            this.version.Text = "Version 1.3.4-alpha";
             this.version.Click += new System.EventHandler(this.Version_Click);
             // 
             // con_buttons
@@ -211,9 +210,9 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(15, 520);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 453);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1377, 210);
+            this.pictureBox1.Size = new System.Drawing.Size(1377, 277);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
