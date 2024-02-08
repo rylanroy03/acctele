@@ -1,4 +1,4 @@
-# ACCTele 1.3.1.0 (AlphaBuild)
+# ACCTele 1.3.3.1 (Alpha)
 ### An open-source realtime telemetry project designed for Assetto Corsa Competizione
 #### Created by Rylan Markwardt
 
@@ -31,7 +31,7 @@ and complete the following:
 	Pretty sure radar guns don't tell you that you were going 214.2984372645 Km/H.
 
 
-### Supported Telemetry Parameters (v1.3.1.0)
+### Supported Telemetry Parameters (v1.3.3.1)
 	- Packet ID
 	- Gas
 	- Brake
