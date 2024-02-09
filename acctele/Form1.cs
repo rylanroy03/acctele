@@ -10,6 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Windows.Forms.VisualStyles;
+using System.Xml;
 
 namespace acctele
 {
@@ -63,13 +64,7 @@ namespace acctele
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
-            Memory_reader reader = new Memory_reader();
-            string[] teleVals = reader.ReadFromSharedMemory();
-            if (freezeVal != true)
-            {
 
-                tele_box.Text = string.Join(Environment.NewLine, teleVals);
-            }
         }
 
 
@@ -84,83 +79,15 @@ namespace acctele
 
         }
 
-        private void Tele_box_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void Copy_con_Click(object sender, EventArgs e)
-        {
-            Memory_reader reader = new Memory_reader();
-            string[] teleVals = reader.ReadFromSharedMemory();
-
-            if (teleVals != null)
-            {
-                Clipboard.SetText(string.Join(Environment.NewLine, teleVals));
-                string message = $"Following values copied to clipboard:\n{string.Join(Environment.NewLine, teleVals)}";
-                MessageBox.Show(message);
-            }
-            else
-            {
-                MessageBox.Show("Nothing copied to clipboard.");
-            }
-        }
-
-        bool freezeVal = false;
-        private void FreezeCon_Click(object sender, EventArgs e)
-        {
-            
-            if (freezeVal != true)
-            {
-                freezeVal = true;
-                FreezeCon.Text = ("Resume");
-                var (canScroll, _) = ScrollAllow();
-                if (canScroll == true)
-                {
-                    tele_box.ScrollBars = ScrollBars.Vertical;
-                }     
-            }
-            else
-            {
-                freezeVal = false;
-                FreezeCon.Text = ("Freeze");
-                tele_box.ScrollBars = ScrollBars.None;
-            }
-        }
-
-        private void Tele_box_SizeChanged(object sender, EventArgs e)
-        {
-            var (canScroll, _) = ScrollAllow();
-            if (canScroll == true && freezeVal == true)
-            {
-                tele_box.ScrollBars = ScrollBars.Vertical;
-            }
-            else
-            {
-                tele_box.ScrollBars = ScrollBars.None;
-            }
-        }
-
-        private (bool canScroll, int tLength) ScrollAllow()
-        {
-            Memory_reader reader = new Memory_reader();
-            string[] teleVals = reader.ReadFromSharedMemory();
-            int tLength = teleVals.Length * 16;
-            if (this.ClientSize.Height < tLength)
-            {
-                bool canScroll = true;
-                return (canScroll, tLength);
-            }
-            else
-            {
-                bool canScroll = false;
-                return (canScroll, tLength);
-            }
-        }
-
         private void Version_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void Console_Click(object sender, EventArgs e)
+        {
+            ConsoleWindow ConsoleWindow = new ConsoleWindow();
+            ConsoleWindow.Show();
         }
     }
 }

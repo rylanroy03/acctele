@@ -29,7 +29,7 @@ namespace acctele
 
             System.Windows.Forms.Timer timer = new System.Windows.Forms.Timer
             {
-                Interval = 2500 // wait time on splash
+                Interval = 3000 // wait time on splash
             };
             timer.Tick += (sender, e) =>
             {

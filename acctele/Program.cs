@@ -5,6 +5,7 @@ using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
+
 namespace acctele
 {
     internal static class Program
@@ -27,6 +28,7 @@ namespace acctele
                 Form1 mainForm = new Form1();
                 mainForm.FormClosed += (s, args) => Application.ExitThread(); // Exit the message loop when main form closes
                 mainForm.Show();
+
             };
             splashScreen.Show();
 
