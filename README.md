@@ -1,4 +1,4 @@
-# ACCTele 1.3.4.0 (Alpha)
+# ACCTele 1.4.1.0 (Alpha)
 ### An open-source realtime telemetry project designed for Assetto Corsa Competizione
 #### Created by Rylan Markwardt
 
@@ -21,20 +21,12 @@ In the interest of ensuring future development of this project, necessary docume
 To change what telemetry is present in the main application console, open memory_reader.cs
 and complete the following:
 
-	Inside public struct TelemetryData, define a new public var with the datatype of the value 
-	you are adding (can be found in ACCSharedMemoryDocumentation.pdf). Be sure to define your 
-	variable in the position it would appear in the memory structure - for example, fuel is in
-	position 4, so if you only want fuel, you need to omit the first three entries (see 
-	memory_reader.cs for an example of how this is executed).
-
-	Inside public string[] ReadFromSharedMemory(), set your array size according to your struct.
-	Then find the TELEMETRY DATA DISPLAY comment to see where you add your strings. A Truncate()
-	function has been provided to remove some ~unnecessary~ precision from the values.
-	
-	Pretty sure radar guns don't tell you that you were going 214.2984372645 Km/H.
+	You should now be able to simply comment out the lines of telemetry you don't want.
+	I have not tested this yet though. Eventually a GUI element will be added to console for selecting
+	displayed values.
 
 
-### Supported Telemetry Parameters (v1.3.4.0)
+### Supported Telemetry Parameters (v1.4.1.0)
 	- Packet ID
 	- Gas
 	- Brake
@@ -43,15 +35,45 @@ and complete the following:
 	- RPM
 	- Steering Angle
 	- Speed (KmH)
-	- Velocity (x,y,z) m/s
-	- Acceleration (x,y,z) G's
-	- Wheelslip
-	- Wheel Angular Speed
-	- Tire Temps
-	- Suspension Travel
+	- Velocity[3]
+	- Acceleration[3]
+	- Wheelslip[4]
+	- Wheel Angular Speed[4]
+	- Tire Temps[4]
+	- Suspension Travel[4]
 	- Traction Control
 	- Heading
 	- Pitch
 	- Roll
-
-Several parameters are planned for addition in the future.
+	- Car damage[5]
+	- Pit Limiter Status
+	- ABS
+	- Autoshift Status
+	- Turbo Boost
+	- Air Temp
+	- Road Temp
+	- Local Angular Velocity[3]
+	- Final Force Feedback
+	- Brake Temps[4]
+	- Clutch
+	- AI Control Status
+	- Tire Contact Point[4][X,Y,Z]
+	- Tire Contact Normals[4][X,Y,Z]
+	- Tire Contact Heading[4][X,Y,Z]
+	- Brake Bias
+	- Local Velocity[3]
+	- Slip Ratio[4]
+	- Slip Angle[4]
+	- Water Temp
+	- Brake Pressure[4]
+	- Front Brake Compound
+	- Rear Brake Compound
+	- Pad Life[4]
+	- Disc Life[4]
+	- Ignition Status
+	- Starter Status
+	- Engine Running Status
+	- FFB Curb Vibration
+	- FFB Slip Vibration
+	- FFB G-Force Vibration
+	- FFB ABS Vibration
