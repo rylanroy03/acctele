@@ -1,4 +1,4 @@
-# ACCTele 1.4.1.0 (Alpha)
+# ACCTele 1.4.1.1 (Alpha)
 ### An open-source realtime telemetry project designed for Assetto Corsa Competizione
 #### Created by Rylan Markwardt
 
@@ -26,7 +26,7 @@ and complete the following:
 	displayed values.
 
 
-### Supported Telemetry Parameters (v1.4.1.0)
+### Supported Telemetry Parameters (v1.4.1.1)
 	- Packet ID
 	- Gas
 	- Brake

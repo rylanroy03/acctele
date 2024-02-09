@@ -32,7 +32,7 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.east_console = new System.Windows.Forms.Panel();
             this.mideast_pane = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.console_button = new System.Windows.Forms.Button();
             this.west_pane = new System.Windows.Forms.Panel();
             this.midwest_pane = new System.Windows.Forms.Panel();
             this.mid_dock = new System.Windows.Forms.Panel();
@@ -62,7 +62,7 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.mideast_pane.AutoSize = true;
             this.mideast_pane.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(30)))), ((int)(((byte)(30)))), ((int)(((byte)(35)))));
-            this.mideast_pane.Controls.Add(this.button1);
+            this.mideast_pane.Controls.Add(this.console_button);
             this.mideast_pane.ImeMode = System.Windows.Forms.ImeMode.NoControl;
             this.mideast_pane.Location = new System.Drawing.Point(674, 0);
             this.mideast_pane.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
@@ -71,20 +71,20 @@
             this.mideast_pane.TabIndex = 1;
             this.mideast_pane.Paint += new System.Windows.Forms.PaintEventHandler(this.Panel2_Paint);
             // 
-            // button1
+            // console_button
             // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Open Console";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Console_Click);
+            this.console_button.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
+            this.console_button.FlatAppearance.BorderSize = 0;
+            this.console_button.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.console_button.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.console_button.ForeColor = System.Drawing.Color.White;
+            this.console_button.Location = new System.Drawing.Point(3, 3);
+            this.console_button.Name = "console_button";
+            this.console_button.Size = new System.Drawing.Size(174, 40);
+            this.console_button.TabIndex = 0;
+            this.console_button.Text = "Open Console";
+            this.console_button.UseVisualStyleBackColor = false;
+            this.console_button.Click += new System.EventHandler(this.Console_Click);
             // 
             // west_pane
             // 
@@ -145,15 +145,16 @@
             // version
             // 
             this.version.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
-            this.version.AutoSize = true;
             this.version.BackColor = System.Drawing.Color.Transparent;
+            this.version.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.version.Location = new System.Drawing.Point(630, 704);
+            this.version.Location = new System.Drawing.Point(281, 712);
             this.version.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(146, 20);
+            this.version.Size = new System.Drawing.Size(854, 18);
             this.version.TabIndex = 7;
-            this.version.Text = "Version 1.4.1-alpha";
+            this.version.Text = "Version 1.4.1-alpha REV1";
+            this.version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.version.Click += new System.EventHandler(this.Version_Click);
             // 
             // pictureBox1
@@ -166,21 +167,6 @@
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
-            // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(70)))), ((int)(((byte)(70)))), ((int)(((byte)(100)))));
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Location = new System.Drawing.Point(3, 3);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(174, 40);
-            this.button1.TabIndex = 0;
-            this.button1.Text = "Open Console";
-            this.button1.UseVisualStyleBackColor = false;
-            this.button1.Click += new System.EventHandler(this.Console_Click);
             // 
             // Form1
             // 
@@ -207,7 +193,6 @@
             this.mid_dock.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -222,7 +207,7 @@
         private System.Windows.Forms.Timer clock;
         private System.Windows.Forms.Label version;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button console_button;
     }
 }
 

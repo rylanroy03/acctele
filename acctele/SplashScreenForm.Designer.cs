@@ -45,7 +45,7 @@
             this.splashVersion.Name = "splashVersion";
             this.splashVersion.Size = new System.Drawing.Size(800, 23);
             this.splashVersion.TabIndex = 2;
-            this.splashVersion.Text = "ACCTele Version 1.4.1-alpha. Pre-release build.";
+            this.splashVersion.Text = "ACCTele Version 1.4.1-alpha REV1. Pre-release build.";
             this.splashVersion.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // startupPlayback
