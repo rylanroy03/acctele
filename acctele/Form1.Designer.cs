@@ -144,16 +144,16 @@
             // 
             // version
             // 
-            this.version.Anchor = System.Windows.Forms.AnchorStyles.Bottom;
             this.version.BackColor = System.Drawing.Color.Transparent;
+            this.version.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.version.Font = new System.Drawing.Font("Verdana", 8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.version.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(224)))), ((int)(((byte)(224)))), ((int)(((byte)(224)))));
-            this.version.Location = new System.Drawing.Point(281, 712);
+            this.version.Location = new System.Drawing.Point(15, 707);
             this.version.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.version.Name = "version";
-            this.version.Size = new System.Drawing.Size(854, 18);
+            this.version.Size = new System.Drawing.Size(1377, 23);
             this.version.TabIndex = 7;
-            this.version.Text = "Version 1.4.1-alpha REV1";
+            this.version.Text = "Version 1.4.2-alpha REV0";
             this.version.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             this.version.Click += new System.EventHandler(this.Version_Click);
             // 
@@ -161,9 +161,9 @@
             // 
             this.pictureBox1.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(15, 453);
+            this.pictureBox1.Location = new System.Drawing.Point(15, 502);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(1377, 277);
+            this.pictureBox1.Size = new System.Drawing.Size(1377, 205);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 9;
             this.pictureBox1.TabStop = false;
@@ -174,11 +174,11 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(10)))), ((int)(((byte)(10)))), ((int)(((byte)(15)))));
             this.ClientSize = new System.Drawing.Size(1407, 745);
-            this.Controls.Add(this.version);
-            this.Controls.Add(this.mid_dock);
             this.Controls.Add(this.west_pane);
             this.Controls.Add(this.east_console);
             this.Controls.Add(this.pictureBox1);
+            this.Controls.Add(this.version);
+            this.Controls.Add(this.mid_dock);
             this.DoubleBuffered = true;
             this.HelpButton = true;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
