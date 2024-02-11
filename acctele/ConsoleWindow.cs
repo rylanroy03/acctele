@@ -18,22 +18,32 @@ namespace acctele
         public ConsoleWindow()
         {
             InitializeComponent();
-
+            
             clock.Interval = pollRate;
             clock.Enabled = true;
             clock.Tick += Timer1_Tick;
-            numericUpDown1.ValueChanged += pollRate_ValueChanged;
-            numericUpDown1.KeyDown += pollRate_KeyDown;
+            numericUpDown1.ValueChanged += PollRate_ValueChanged;
+            numericUpDown1.KeyDown += PollRate_KeyDown;
 
+            console_txt1.MouseWheel += Console_MouseWheel;
+            console_txt2.MouseWheel += Console_MouseWheel;
+            console_txt3.MouseWheel += Console_MouseWheel;
+            console_txt4.MouseWheel += Console_MouseWheel;
         }
 
         // Init Vars
         bool freezeVal = false;
+        public string telemetryname = "acpmf_physics";
+        public int telemetrylen = 90;
+        public bool mouseOver1 = false;
+        public bool mouseOver2 = false;
+        public bool mouseOver3 = false;
+        public bool mouseOver4 = false;
 
         private void Timer1_Tick(object sender, EventArgs e)
         {
             Memory_reader reader = new Memory_reader();
-            string[] teleVals = reader.ReadFromSharedMemory();
+            string[] teleVals = reader.ReadFromSharedMemory(telemetryname, telemetrylen);
             if (freezeVal != true)
             {
                 int maxRows = GetMaxRows();
@@ -110,13 +120,13 @@ namespace acctele
         }
 
         
-        private void pollRate_ValueChanged(object sender, EventArgs e)
+        private void PollRate_ValueChanged(object sender, EventArgs e)
         {
             pollRate = 1000 / (int)numericUpDown1.Value;
             clock.Interval = pollRate;
         }
 
-        private void pollRate_KeyDown(object sender, KeyEventArgs e)
+        private void PollRate_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Return || e.KeyCode == Keys.Enter)
             {
@@ -127,6 +137,85 @@ namespace acctele
         {
             this.Focus();
         }
+
+        private void ShowPhysicsCon(object sender, EventArgs e)
+        {
+            telemetryname = "acpmf_physics";
+            telemetrylen = 90;
+        }
+
+        private void ShowGraphicCon(object sender, EventArgs e)
+        {
+            telemetryname = "acpmf_graphics";
+            telemetrylen = 360;
+        }
+        private void ShowStaticCon(object sender, EventArgs e)
+        {
+            telemetryname = "acpmf_static";
+            telemetrylen = 360;
+        }
+
+        private void Console_MouseWheel(object sender, MouseEventArgs e)
+        {
+            if (mouseOver1 == true || mouseOver2 == true || mouseOver3 == true || mouseOver4 == true)
+            {
+                // Adjust the font size based on the mouse wheel delta
+                int fontSizeIncrement = e.Delta > 0 ? 1 : -1;
+                ChangeFontSize(console_txt1, fontSizeIncrement);
+                ChangeFontSize(console_txt2, fontSizeIncrement);
+                ChangeFontSize(console_txt3, fontSizeIncrement);
+                ChangeFontSize(console_txt4, fontSizeIncrement);
+
+            }
+        }
+
+        private void ChangeFontSize(TextBox textBox, int increment)
+        {
+            // Adjust the font size of the TextBox
+            int newFontSize = Math.Max(1, (int)textBox.Font.Size + increment);
+            if (newFontSize > 4 && newFontSize < 20)
+            {
+                textBox.Font = new Font(textBox.Font.FontFamily, newFontSize);
+            }
+        }
+
+        private void Txt1_Enter(object sender, EventArgs e)
+        {
+            mouseOver1 = true;
+        }
+
+        private void Txt1_Leave(object sender, EventArgs e)
+        {
+            mouseOver1 = false;
+        }
+        private void Txt2_Enter(object sender, EventArgs e)
+        {
+            mouseOver2 = true;
+        }
+
+        private void Txt2_Leave(object sender, EventArgs e)
+        {
+            mouseOver2 = false;
+        }
+        private void Txt3_Enter(object sender, EventArgs e)
+        {
+            mouseOver3 = true;
+        }
+
+        private void Txt3_Leave(object sender, EventArgs e)
+        {
+            mouseOver3 = false;
+        }
+        private void Txt4_Enter(object sender, EventArgs e)
+        {
+            mouseOver4 = true;
+        }
+
+        private void Txt4_Leave(object sender, EventArgs e)
+        {
+            mouseOver4 = false;
+        }
+
 
     }
 }
